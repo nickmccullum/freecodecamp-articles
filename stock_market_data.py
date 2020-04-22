@@ -1,5 +1,6 @@
 import pandas as pd
 import xlsxwriter
+import boto3
 
 IEX_API_Key = ''
 
@@ -144,3 +145,6 @@ writer.sheets['Stock Market Data'].set_column('C:C', 18)
 writer.sheets['Stock Market Data'].set_column('D:D', 20)
 
 writer.save()
+
+s3 = boto3.resource('s3')
+s3.meta.client.upload_file('stock_market_data.xlsx', 'my-S3-bucket', 'stock_market_data.xlsx', ExtraArgs={'ACL':'public-read'})

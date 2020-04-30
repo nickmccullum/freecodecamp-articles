@@ -104,6 +104,20 @@ plt.xlabel("Date", fontsize=20)
 #Create a Python histogram
 ########################
 
+#Set the size of the matplotlib canvas
+plt.figure(figsize = (18,12))
+
+#Generate the histogram
+plt.hist(bank_data.transpose(), bins = 50)
+
+#Add a legend to the histogram
+plt.legend(bank_data.columns,fontsize=20)
+
+#Add titles to the chart and axes
+plt.title("A Histogram of Daily Closing Stock Prices for the 5 Largest Banks in the US (5Y Lookback)", fontsize = 20)
+plt.ylabel("Observations", fontsize = 20)
+plt.xlabel("Stock Prices", fontsize = 20)
+
 ########################
 #Create subplots in Python
 ########################

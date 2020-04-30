@@ -1,3 +1,7 @@
+########################
+#Import and clean data
+########################
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -54,12 +58,55 @@ bank_data = pd.concat(series_list, axis=1)
 bank_data.columns = column_names
 bank_data.set_index('Date', inplace = True)
 
+########################
 #Create a Python boxplot
+########################
 
+#Set the size of the matplotlib canvas
+plt.figure(figsize = (18,12))
+
+#Generate the boxplot
+plt.boxplot(bank_data.transpose())
+
+#Add titles to the chart and axes
+plt.title('Boxplot of Bank Stock Prices (5Y Lookback)', fontsize = 20)
+plt.xlabel('Bank', fontsize = 20)
+plt.ylabel('Stock Prices', fontsize = 20)
+
+#Add labels to each individual boxplot on the canvas
+ticks = range(1, len(bank_data.columns)+1)
+labels = list(bank_data.columns)
+plt.xticks(ticks,labels, fontsize = 20)
+
+########################
 #Create a Python scatterplot
+########################
 
+#Set the size of the matplotlib canvas
+plt.figure(figsize = (18,12))
+
+#Create the x-axis data
+dates = bank_data.index.to_series()
+dates = [pd.to_datetime(d) for d in dates]
+
+#Create the y-axis data
+WFC_stock_prices =  bank_data['WFC']
+
+#Generate the scatterplot
+plt.scatter(dates, WFC_stock_prices)
+
+#Add titles to the chart and axes
+plt.title("Wells Fargo Stock Price (5Y Lookback)", fontsize=20)
+plt.ylabel("Stock Price", fontsize=20)
+plt.xlabel("Date", fontsize=20)
+
+########################
 #Create a Python histogram
+########################
 
+########################
 #Create subplots in Python
+########################
+
 
 #Push the file to AWS S3

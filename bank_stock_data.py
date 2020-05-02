@@ -140,7 +140,7 @@ plt.boxplot(bank_data.transpose())
 
 #Add titles to the chart and axes
 plt.title('Boxplot of Bank Stock Prices (5Y Lookback)')
-plt.xlabel('Bank', fontsize = 20)
+plt.xlabel('Bank')
 plt.ylabel('Stock Prices')
 
 #Add labels to each individual boxplot on the canvas

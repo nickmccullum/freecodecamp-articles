@@ -206,8 +206,15 @@ plt.xlabel("Stock Prices")
 
 plt.tight_layout()
 
-########################
+################################################
 #Save the figure to our local machine
-########################
+################################################
 
 plt.savefig('bank_data.png')
+
+################################################
+#Push the file to the AWS S3 bucket
+################################################
+
+s3 = boto3.resource('s3')
+s3.meta.client.upload_file('bank_data.png', 'nicks-first-bucket', 'bank_data.png', ExtraArgs={'ACL':'public-read'})

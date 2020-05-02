@@ -205,3 +205,9 @@ plt.ylabel("Observations")
 plt.xlabel("Stock Prices")
 
 plt.tight_layout()
+
+########################
+#Save the figure to our local machine
+########################
+
+plt.savefig('bank_data.png')

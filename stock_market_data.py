@@ -20,21 +20,16 @@ tickers = [
 
 
 #Create an empty string called `ticker_string` that we'll add tickers and commas to
-ticker_string = ''
-
-#Loop through every element of `tickers` and add them and a comma to ticker_string
-for ticker in tickers:
-    ticker_string += ticker
-    ticker_string += ','
-    
-#Drop the last comma from `ticker_string`
-ticker_string = ticker_string[:-1]
+ticker_string = ','.join(tickers)
 
 #Create the endpoint strings
 endpoints = 'price,stats'
 
 #Interpolate the endpoint strings into the HTTP_request string
 HTTP_request = f'https://cloud.iexapis.com/stable/stock/market/batch?symbols={ticker_string}&types={endpoints}&range=1y&token={IEX_API_Key}'
+
+# Send the request and use pandas to directly read the json answer
+raw_data = pd.read_json(HTTP_request)
 
 #Create an empty pandas DataFrame to append our parsed values into during our for loop
 output_data = pd.DataFrame(pd.np.empty((0,4)))
